@@ -32,7 +32,7 @@ app.use('/', require('./routes/index'));
 
 app.use('/album',require('./routes/album'));
 app.use('/images',require('./routes/images'));
-
+app.use('/addAlbum',require('./routes/addAlbum'));
 
 
 // catch 404 and forward to error handler

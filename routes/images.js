@@ -22,7 +22,6 @@ router.get('/getalbumimages/:albumId', authMiddleware, function (req, res, next)
     }).populate('photos');
 });
 
-
 router.post('/uploadimage/:albumId', upload.array('images'), function (req, res) {
     var albumId = req.params.albumId;
     async.each(req.files, function (file, cb) {
@@ -63,7 +62,6 @@ router.post('/uploadimage/:albumId', upload.array('images'), function (req, res)
 
     });
 });
-
 
 
 module.exports = router;
