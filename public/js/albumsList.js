@@ -12,6 +12,7 @@ function init() {
 function getAlbums(){
   //debugger;
   $.get('/album/getalbums', function(data) {
+    console.log('data:', data)
       albums = data;
       displayItems();
    });

@@ -13,8 +13,10 @@ router.get('/showAlbum/:albumId', authMiddleware, function(req, res, next) {
 
 
 router.get('/getalbums', authMiddleware, function(req, res, next) {
+  console.log('getalbums')
   var userMongoId = req.user._id;
   User.findById(userMongoId, function(err, userObject) {
+    console.log('userObject:', userObject);
     var userAlbumsArray = userObject.albumsArray;
     res.send(userAlbumsArray);
   }).populate('albumsArray');

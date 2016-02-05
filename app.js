@@ -10,7 +10,7 @@ var app = express();
 var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/KemptonImports'
 var mongoose = require('mongoose');
 mongoose.connect(mongoUrl, function(err) {
-  console.log(err || 'Connected to MongoDB: ${mongoUrl}');
+  console.log(err || `Connected to MongoDB: ${mongoUrl}`);
 });
 
 // view engine setup

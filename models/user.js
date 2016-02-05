@@ -2,8 +2,7 @@
 
 var mongoose = require('mongoose');
 var jwt = require('jwt-simple');
-//var JWT_SECRET = process.env.JWT_SECRET;
-var JWT_SECRET = 'my dog has fleas';
+var JWT_SECRET = process.env.JWT_SECRET;
 
 var userSchema = new mongoose.Schema({
   uid: {type: String},

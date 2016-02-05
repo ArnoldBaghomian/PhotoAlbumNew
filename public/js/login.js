@@ -5,6 +5,7 @@ var $email, $password;
 $(function() {
   $email = $('#email');
   $password = $('#password');
+  $('#outme').hide();
 
   $('form').on('submit', loginUser);
 
