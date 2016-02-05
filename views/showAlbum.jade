@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .black_background.text-center
+    h2 Album
+  br
+  form(action='/images/uploadimage/'+'#{albumId}', method='post', enctype='multipart/form-data')
+    input(type='file', name='images', id='images' multiple=true)
+    button Submit 
+    br
+    br
+    h3 Album Name: #{album-name}
+    h3 Description #{album-description}
+    .itemIdDiv(id='#{albumId}')
+    br
+    br
+  .container#list
+
+block scripts
+  script(src="/js/showAlbum.js")

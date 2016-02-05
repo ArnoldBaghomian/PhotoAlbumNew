@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .text-center
+    h2 Album List
+  br
+  .form
+    | name:
+    br      
+    input#name(type="text") 
+    br
+    | description:
+    br      
+    input#description(type='text')
+    br
+    a.btn.btn-success.btn-circle(href='#') Save
+  .container#list
+  
+block scripts
+  script(src="/js/albumsList.js")

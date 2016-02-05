@@ -1,0 +1,89 @@
+body{
+	background-color: black;	
+	color:  white;
+
+}
+.center{
+	text-align: center;
+}
+
+form{
+	padding-left: 420px;
+
+}
+
+.form-control{
+    width: 40%;
+
+}
+
+.thumb{
+	width: 50px;
+	height:40px;
+}
+
+input{
+	color: black;
+}
+
+label{
+	text-align: left;
+}
+
+body{
+	background-image: url("http://cf067b.medialib.glogster.com/ma-cka/media/52/527571751ef547c4a0658b87818f316b24206d7f/album-pictures-3.jpg");
+    background-size: cover;
+	  background-position: top right;
+	  background-position-x: 100%;
+	  background-position-y: 0%;
+	  background-repeat: no-repeat;
+	  font-size: 20px;
+	  text-align: center;
+}
+form{
+	text-align: left;
+}
+
+
+#create-item-btn, .btn{
+    border-radius: 25px;
+    background: #73AD21;
+    padding: 20px; 
+    width: 100px;
+    height: 70px;
+}
+
+
+.box {
+	overflow: auto;
+	border: 5px solid white;
+	height: 200px;
+	width: 450px;
+	background-color: black;
+	border-radius: 10px;
+}
+
+li:hover {
+	background-color: white;
+	color: black;
+}
+
+.row{
+	display:flex;
+	justify-content:center;
+}
+
+
+.btn-rounded {
+	width: 1em;
+	height: 1em;
+	padding:1em;
+	border-radius: 50%;
+}
+
+.btn-circle {
+	width: 5em;
+	height: 3em;
+	text-align: center;
+	border-radius: 45%;
+}
