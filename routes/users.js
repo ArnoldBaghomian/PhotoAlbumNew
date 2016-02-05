@@ -44,6 +44,7 @@ router.post('/login', function(req, res, next) {
       }
       if(!user){
         console.log(user)
+        return res.send(400).status('error finding user')
       }
 
       var token = user.generateToken();
