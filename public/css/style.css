@@ -1,25 +1,18 @@
 body{
-	background-color: black;	
-	color:  white;
+	background-color: white;
+	color: black;
 
 }
 .center{
 	text-align: center;
 }
 
-form{
-	padding-left: 420px;
 
-}
 
-.form-control{
-    width: 40%;
-
-}
 
 .thumb{
-	width: 50px;
-	height:40px;
+	width: 200px;
+	height:200px;
 }
 
 input{
@@ -31,7 +24,7 @@ label{
 }
 
 body{
-	background-image: url("http://cf067b.medialib.glogster.com/ma-cka/media/52/527571751ef547c4a0658b87818f316b24206d7f/album-pictures-3.jpg");
+	/*background-image: url("http://cf067b.medialib.glogster.com/ma-cka/media/52/527571751ef547c4a0658b87818f316b24206d7f/album-pictures-3.jpg");*/
     background-size: cover;
 	  background-position: top right;
 	  background-position-x: 100%;
@@ -40,19 +33,21 @@ body{
 	  font-size: 20px;
 	  text-align: center;
 }
+
 form{
+	padding-left: 0px;
 	text-align: left;
+
 }
 
+.form-control{
+	width: 100%;
 
-#create-item-btn, .btn{
-    border-radius: 25px;
-    background: #73AD21;
-    padding: 20px; 
-    width: 100px;
-    height: 70px;
 }
 
+.row{
+
+}
 
 .box {
 	overflow: auto;
@@ -78,12 +73,18 @@ li:hover {
 	width: 1em;
 	height: 1em;
 	padding:1em;
+	text-align:center;
 	border-radius: 50%;
 }
 
 .btn-circle {
-	width: 5em;
-	height: 3em;
-	text-align: center;
+	width: 2em;
+	height: 1em;
+
 	border-radius: 45%;
+	font-size:100%;
+}
+
+th {
+	font-size: 150%;
 }

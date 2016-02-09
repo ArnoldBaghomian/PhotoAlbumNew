@@ -2,13 +2,17 @@
 
 var mongoose = require('mongoose');
 var jwt = require('jwt-simple');
+
 var JWT_SECRET = process.env.JWT_SECRET;
 
 var userSchema = new mongoose.Schema({
   uid: {type: String},
-  email :{type: String, required: true, unique: true }
+  email :{type: String, required: true, unique: true },
+  albums:[{type: mongoose.Schema.Types.ObjectId, ref: "Album"}]
 
 });
+
+
 
 // instance method
 userSchema.methods.generateToken = function() {

@@ -1,8 +1,0 @@
-AWS_USERNAME=KemptonReal
-AWS_ACCESS_KEY_ID=AKIAINJK7LCRAPXFLBAA
-AWS_SECRET_ACCESS_KEY=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
-AWS_BUCKET=kemptonkemptonreal
-JWT_SECRET=ept2z%lh^_)2u!7q-p$zz(2j5&njy10el+5r2#qft^y(z^&d0$
-MONGOLAB_URI=mongodb://localhost/KemptonPhotos
-AWS_URL=https://s3-us-west-1.amazonaws.com/
-MONGOLAB_URI=mongodb://localhost/KemptonPhotos

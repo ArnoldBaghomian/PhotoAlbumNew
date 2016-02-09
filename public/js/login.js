@@ -19,7 +19,7 @@ function loginUser(e) {
 
   $.post('/users/login', {email: email, password: password})
   .success(function(data) {
-    location.href = 'addAlbum';
+    location.href = 'albumsList';
   })
   .fail(function(err) {
     alert('Error.  Check console.');

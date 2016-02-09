@@ -1,21 +1,27 @@
 $(document).ready(init);
 var albums = [];
-var tableAlbumsRow = [];
+var tableAlbumsRows = [];
 
 function init() {
+  console.log('albumsList init');
   getAlbums();
-  $('.btn-sucess').on('click', newAlbum);
+  $('.saveIt').on('click', newAlbum);
   $('#list').on('click', '.delete', deleteAlbum);
-  $('#list').on('click', '.edit', showAlbum);
+  $('#list').on('click', '.view', showAlbum);
 }
 
 function getAlbums(){
   //debugger;
-  $.get('/album/getalbums', function(data) {
-    console.log('data:', data)
+  $.get('/album/getalbums')
+  .done(function(data) {
       albums = data;
-      displayItems();
-   });
+      displayAlbums();
+   })
+  .fail(function(err){
+    console.log(err)
+    alert(err);
+  })
+
 }
 
 function newAlbum(){
@@ -30,6 +36,7 @@ function newAlbum(){
   $.post("/album/createalbum", anAlbum)
   .done(function(data){
     getAlbums();
+
   })
   .fail(function(err){
     console.log(err)
@@ -38,58 +45,45 @@ function newAlbum(){
 }
 
 function deleteAlbum(){
-  var index = $(this).closest('.row-container').index() - 1;
-  var album = albums[index];
+  var $row = $(this).closest('tr');
+  albumIndex = $row.index();  // no -1 because of headers
+  var album = albums[albumIndex];
   var id = album._id;
 
   $.ajax({
     method: "DELETE",
-    url: "/album/" + id
+    url: "/album/" + id + '/' + albumIndex
   })
   .done(function(status){
     getAlbums();
-  });
+});
 }
 
 function showAlbum(){
-  var index = $(this).closest('.row-container').index() - 1;
-  var album = albums[index];
+  var $row = $(this).closest('tr');
+  albumIndex = $row.index();  // no -1 because of headers
+  var album = albums[albumIndex];
   var id = album._id;
 
-  location.href = '/albums/showAlbum/' + id;
+  location.href = '/album/showAlbum/' + id + '/' + album.name + '/' + album.description;
 }
 
-function displayItems(){
+function displayAlbums(){
   $('#list').empty();
-  tableAlbumsRow.splice(0, tableAlbumsRow.length);
+  tableAlbumsRows.splice(0, tableAlbumsRows.length);
 
-  var $titles = $('<tr>').addClass('row-container row-title');
-  var $title = $('<td>').addClass('name-title ').text('Name');
-  $titles.append($title);
-  var $description = $('<td>').addClass('description-title ').text('Description');
-  $titles.append($description);
-  var $space1 = $('<td>')
-  $titles.append($space1);
-  var $space2 = $('<td>')
-  $titles.append($space2);
 
-  tableAlbumsRow.push($titles);
 
-  albums.map(function(item){
-    var $row = $('<tr>').addClass('row row-container');
-    var $col = $('<td>').addClass('name-col ').text(item.name);
-    $row.append($col);
-    var $description = $('<td>').addClass('description-col ').text(item.description);
-    $row.append($description);
-    var $deleteBtn = $('<button>').addClass('delete description-col ').text('Delete');
-    $row.append($deleteBtn);
-    var $edit = $('<button>').addClass('edit description-col ').text('View');
-    $row.append($edit);
-
-    tableAlbumsRow.push($row);
+  tableAlbumsRows = albums.map(function(item, index){
+    var $tr = $('#template').clone();
+    $tr.removeClass('hidden');
+    $tr.removeAttr('id');
+    $tr.find('.name-col').text(item.name);
+    $tr.find('.description-col').text(item.description);
+    return $tr;
   });
 
-  $('#list').append(tableAlbumsRow);
+  $('#list').append(tableAlbumsRows);
 }
 
 

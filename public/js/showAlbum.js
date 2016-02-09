@@ -1,15 +1,36 @@
 $(document).ready(init);
 
 var photoArray = [];
+var tableAlbumsRows = [];
 
 function init() {
-
+    console.log('show album init');
+    $('#photoTable').on('click', '.delete', deletePhoto);
+    $('#photoTable').on('click', '.view', viewPhoto);
     getPhotos();
 }
 
+function deletePhoto() {
+    var index = $(this).closest('.row-container').index();
+    var image = photoArray[index];
+    var id = image._id;
+    var albumId = $('.albumID').attr('id');
+
+    $.ajax({
+            method: "DELETE",
+            url: "/images/" + id + '/' + albumId + '/' + index
+        })
+        .done(function(status){
+            getPhotos();
+        });
+}
+
+
+
+
 function getPhotos() {
 
-    var albumId = $('.itemIdDiv').attr('id');
+    var albumId = $('.albumID').attr('id');
 
     $.get('/images/getalbumimages/' + albumId, function (data) {
         photoArray = data;
@@ -17,40 +38,40 @@ function getPhotos() {
     });
 }
 
-function showPhotos() {
-    $('#list').empty();
-    tableAlbumsRow.splice(0, tableAlbumsRow.length);
 
-    var $titles = $('<tr>').addClass('row-container row-title');
-    var $title = $('<td>').addClass('name-title ').text('Name');
-    $titles.append($title);
-    var $description = $('<td>').addClass('description-title ').text('Description');
-    $titles.append($description);
-    var $space1 = $('<td>')
-    $titles.append($space1);
-    var $space2 = $('<td>')
-    $titles.append($space2);
-
-    tableAlbumsRow.push($titles);
-
-    photoArray.map(function (item) {
-        var $row = $('<tr>').addClass('row row-container');
-        var $name = $('<td>').addClass('name-col ').text(item.name);
-        $row.append($name);
-        var $imageCell = $('<td>').addClass('image')
-        var $img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
-        $img.attr('src', item.url);
-        $imageCell.append($img);
-        $row.append($imageCell);
-        var $description = $('<td>').addClass('description-col ').text(item.description);
-        $row.append($description);
-        var $deleteBtn = $('<button>').addClass('deleteBtn description-col ').text('Delete');
-        $row.append($deleteBtn);
-
-        tableAlbumsRow.push($row);
-    });
-
-    $('#list').append(tableAlbumsRow);
+function viewPhoto()
+{
+    var index = $(this).closest('.row-container').index();
+    var image = photoArray[index];
+    var id = image._id;
+    location.href = '/images/viewPhoto/' + id;
 }
 
+function showPhotos() {
+    $('#photoTable').empty();
+    tableAlbumsRows.splice(0, tableAlbumsRows.length);
+
+
+
+    photoArray.map(function (photo) {
+        var $row = $('<tr>').addClass('row row-container');
+        var $image = $('<td>').addClass('image')
+        var $img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
+        $img.attr('src', photo.url);
+        $img.addClass('thumb');
+        $image.append($img);
+        var $space = $('tr').addClass('row space').css('height', '10px');;
+        $row.append($space);
+        $row.append($image);
+
+        var $viewBtn = $('<button>').addClass('btn-success view  delete-col').text('View');
+        $row.append($viewBtn);
+        var $deleteBtn = $('<button>').addClass('btn-danger delete delete-col').text('Delete');
+        $row.append($deleteBtn);
+
+        tableAlbumsRows.push($row);
+    });
+
+    $('#photoTable').append(tableAlbumsRows);
+}
 
