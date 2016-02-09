@@ -1,0 +1,90 @@
+body{
+	background-color: white;
+	color: black;
+
+}
+.center{
+	text-align: center;
+}
+
+
+
+
+.thumb{
+	width: 200px;
+	height:200px;
+}
+
+input{
+	color: black;
+}
+
+label{
+	text-align: left;
+}
+
+body{
+	/*background-image: url("http://cf067b.medialib.glogster.com/ma-cka/media/52/527571751ef547c4a0658b87818f316b24206d7f/album-pictures-3.jpg");*/
+    background-size: cover;
+	  background-position: top right;
+	  background-position-x: 100%;
+	  background-position-y: 0%;
+	  background-repeat: no-repeat;
+	  font-size: 20px;
+	  text-align: center;
+}
+
+form{
+	padding-left: 0px;
+	text-align: left;
+
+}
+
+.form-control{
+	width: 100%;
+
+}
+
+.row{
+
+}
+
+.box {
+	overflow: auto;
+	border: 5px solid white;
+	height: 200px;
+	width: 450px;
+	background-color: black;
+	border-radius: 10px;
+}
+
+li:hover {
+	background-color: white;
+	color: black;
+}
+
+.row{
+	display:flex;
+	justify-content:center;
+}
+
+
+.btn-rounded {
+	width: 1em;
+	height: 1em;
+	padding:1em;
+	text-align:center;
+	border-radius: 50%;
+}
+
+.btn-circle {
+	width: 2em;
+	height: 1em;
+
+	border-radius: 45%;
+	font-size:100%;
+}
+
+th {
+	font-size: 150%;
+}
