@@ -26,7 +26,7 @@ var Image = require('../models/image');
 var ref = new Firebase('https://arnoldportfolio.firebaseio.com/');
 var AWS = require('aws-sdk');
 var s3 = new AWS.S3();
-//require('dotenv').config();
+require('dotenv').config();
 
 router.get('/getalbumimages/:albumId', authMiddleware, function (req, res, next) {
     var albumMongoId = req.params.albumId;

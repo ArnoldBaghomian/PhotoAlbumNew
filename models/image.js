@@ -22,7 +22,7 @@ var mongoose = require('mongoose');
 var uuid = require('node-uuid');
 var multer = require('multer');
 var async = require('async');
-//require('dotenv').config();
+require('dotenv').config();
 
 var imageSchema = new mongoose.Schema({
     key: {type: String},
